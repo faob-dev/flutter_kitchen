@@ -7,5 +7,5 @@ Bubble Trouble game built with Flutter framework. Built for web and desktop, use
 - Use <b>Mouse</b> to move player
 
 ##### Demo
-<img src="https://raw.githubusercontent.com/faob-dev/flutter_kitchen/master/bubble_trouble_game/screenshots/game.jpg" width=800 height=500>
+<img src="https://raw.githubusercontent.com/faob-dev/flutter_kitchen/master/bubble_trouble_game/screenshots/game.jpg" width=800 height=600>
 
