@@ -6,7 +6,7 @@ abstract class Game {
   final Size size;
 
   Game({
-    @required this.size,
+    required this.size,
   });
 
   void update(double t) {}
@@ -15,12 +15,12 @@ abstract class Game {
 }
 
 abstract class GameObject extends Game with Collider {
-  Shape body;
+  Shape get body;
   Paint paint = Paint()..color = Colors.white;
 
   GameObject({
-    @required Size size,
-  }) : super(size: size);
+    required super.size,
+  });
 }
 
 class TextObject extends Game {
@@ -29,14 +29,14 @@ class TextObject extends Game {
   Offset position;
 
   TextObject({
-    @required Size size,
+    required super.size,
     this.text = "",
     this.style = const TextStyle(),
     this.position = Offset.zero,
-  }) : super(size: size);
+  });
 
-  String _oldText;
-  TextPainter _textPainter;
+  String? _oldText;
+  late TextPainter _textPainter;
 
   @override
   void draw(Canvas canvas) {

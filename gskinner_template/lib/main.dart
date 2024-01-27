@@ -3,7 +3,7 @@ import 'package:gskinner_template/app/template.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: CardsTemplateDemo(),
       debugShowCheckedModeBanner: false,
     ),

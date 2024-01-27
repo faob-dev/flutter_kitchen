@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gskinner_template/app/custom_widgets/sliding_panel.dart';
 
 import 'model.dart';
 
 class CardsTemplateDemo extends StatefulWidget {
+  const CardsTemplateDemo({super.key});
+
   @override
-  _CardsTemplateDemoState createState() => _CardsTemplateDemoState();
+  State<CardsTemplateDemo> createState() => _CardsTemplateDemoState();
 }
 
 class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
@@ -30,7 +31,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
     );
   }
 
-  List<Widget> _buildCards({Size size, bool isDesktop}) {
+  List<Widget> _buildCards({required Size size, required bool isDesktop}) {
     var cards = loadCards(iconSize: isDesktop ? 250 : 180);
 
     List<Widget> cardWidgets = [];
@@ -55,7 +56,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
               width: double.infinity,
               height: double.infinity,
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: 100, bottom: 150),
+              padding: const EdgeInsets.only(right: 100, bottom: 150),
               child: card.icon,
             ),
             SlidingPanel(
@@ -64,7 +65,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 80, top: 60, bottom: 80, right: 80),
-                    child: Container(
+                    child: SizedBox(
                       width: 520,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -101,14 +102,14 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
                                   },
                                   splashColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                      side: BorderSide(
+                                      side: const BorderSide(
                                         color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid,
                                       ),
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Text(
-                                    card.buttonText,
+                                    card.buttonText!,
                                     style: GoogleFonts.aldrich(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
@@ -142,7 +143,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
               width: double.infinity,
               height: double.infinity,
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: 50, bottom: 100),
+              padding: const EdgeInsets.only(right: 50, bottom: 100),
               child: card.icon,
             ),
             SlidingPanel(
@@ -151,7 +152,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 20, top: 20, bottom: 20, right: 20),
-                    child: Container(
+                    child: SizedBox(
                       width: 320,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -188,14 +189,14 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
                                   },
                                   splashColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                      side: BorderSide(
+                                      side: const BorderSide(
                                         color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid,
                                       ),
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Text(
-                                    card.buttonText,
+                                    card.buttonText!,
                                     style: GoogleFonts.aldrich(
                                       color: Colors.white,
                                       fontSize: 12,
@@ -224,7 +225,7 @@ class _CardsTemplateDemoState extends State<CardsTemplateDemo> {
         height: 150,
         color: Colors.black,
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.only(left: 20),
         child: Text(
           "FOOTER",
           style: GoogleFonts.kronaOne(

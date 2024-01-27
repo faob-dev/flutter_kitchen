@@ -6,11 +6,12 @@ class Player extends GameObject {
   final double _strokeWidth = 2;
   Offset _moveOffset = Offset.zero;
 
-  Rectangle _body;
+  late Rectangle _body;
 
+  @override
   Rectangle get body => _body;
 
-  Player({@required Size size}) : super(size: size) {
+  Player({required super.size}) {
     _body = Rectangle(x: 0, y: 0, w: 15, h: 65);
   }
 

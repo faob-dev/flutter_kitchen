@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:bubble_trouble_game/game_nodes/game.dart';
 import 'package:bubble_trouble_game/game_nodes/shapes.dart';
 
-class Collider {
-  bool checkCollision(GameObject obj) => false;
+mixin class Collider {
+  bool checkCollision(GameObject other) => false;
 
   bool checkCircleRectCollision(Circle circle, Rectangle rect) {
     double cx = circle.cx;
@@ -19,12 +19,16 @@ class Collider {
     double testX = cx;
     double testY = cy;
 
-    if (cx < rx)
+    if (cx < rx) {
       testX = rx;
-    else if (cx > rx + rw) testX = rx + rw;
-    if (cy < ry)
+    } else if (cx > rx + rw) {
+      testX = rx + rw;
+    }
+    if (cy < ry) {
       testY = ry;
-    else if (cy > ry + rh) testY = ry + rh;
+    } else if (cy > ry + rh) {
+      testY = ry + rh;
+    }
 
     double distX = cx - testX;
     double distY = cy - testY;

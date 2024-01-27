@@ -12,26 +12,26 @@ class GamePainter extends CustomPainter {
 
   /////////////////////////////
 
-  Arrow _arrow;
-  Player _player;
-  List<Ball> _balls = [];
-  TextObject _levelText;
+  late Arrow _arrow;
+  late Player _player;
+  late TextObject _levelText;
+  final List<Ball> _balls = [];
 
-  Duration _lastTimeStamp;
+  Duration? _lastTimeStamp;
   static bool fire = false;
   int _currentLevel = 0;
 
   ////////////////////////////
 
   GamePainter({
-    this.size,
-    AnimationController controller,
+    required this.size,
+    AnimationController? controller,
   }) : super(repaint: controller) {
     _player = Player(size: size);
     _arrow = Arrow(size: size);
     _levelText = TextObject(
       size: size,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 30,
         color: Colors.white,
         fontWeight: FontWeight.bold,
@@ -86,7 +86,7 @@ class GamePainter extends CustomPainter {
     if (_lastTimeStamp == null) {
       _lastTimeStamp = timeStamp;
     } else {
-      t = (timeStamp - _lastTimeStamp).inMicroseconds /
+      t = (timeStamp - _lastTimeStamp!).inMicroseconds /
           Duration.microsecondsPerSecond;
     }
     _lastTimeStamp = timeStamp;
@@ -110,7 +110,7 @@ class GamePainter extends CustomPainter {
           break;
         }
       }
-      if (_balls.length == 0) {
+      if (_balls.isEmpty) {
         createNewLevel();
       }
     }

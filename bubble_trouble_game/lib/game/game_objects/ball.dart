@@ -9,19 +9,19 @@ class Ball extends GameObject {
   final double _speed = 30;
   static const double minRadius = 8;
 
-  Circle _body;
+  late Circle _body;
 
+  @override
   Circle get body => _body;
 
   Ball({
-    @required Size size,
+    required super.size,
     Offset center = Offset.zero,
     Offset velocity = const Offset(5, -12),
-    int splitIndex,
-  }) : super(size: size) {
-    this._vx = velocity.dx;
-    this._vy = velocity.dy;
-    this.splitIndex = splitIndex;
+    required this.splitIndex,
+  }) {
+    _vx = velocity.dx;
+    _vy = velocity.dy;
 
     _body = Circle(
       cx: center.dx + 0,
@@ -35,18 +35,19 @@ class Ball extends GameObject {
       Ball(
         size: size,
         center: Offset(_body.cx, _body.cy),
-        velocity: Offset(5, -12),
-        splitIndex: this.splitIndex - 1,
+        velocity: const Offset(5, -12),
+        splitIndex: splitIndex - 1,
       ),
       Ball(
         size: size,
         center: Offset(_body.cx, _body.cy),
-        velocity: Offset(-5, -12),
-        splitIndex: this.splitIndex - 1,
+        velocity: const Offset(-5, -12),
+        splitIndex: splitIndex - 1,
       )
     ];
   }
 
+  @override
   void update(double t) {
     _body.cx += _vx * t * _speed;
     _body.cy += _vy * t * _speed;
@@ -79,7 +80,7 @@ class Ball extends GameObject {
   @override
   bool checkCollision(GameObject other) {
     if (other.body is Rectangle) {
-      return checkCircleRectCollision(this.body, other.body);
+      return checkCircleRectCollision(body, other.body as Rectangle);
     }
     return false;
   }

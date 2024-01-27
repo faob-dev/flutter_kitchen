@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 class Arrow extends GameObject {
   final double _speed = 1000;
 
-  Rectangle _body;
+  late Rectangle _body;
 
+  @override
   Rectangle get body => _body;
 
-  Arrow({@required Size size}) : super(size: size) {
+  Arrow({required super.size}) {
     _body = Rectangle(x: 0, y: 0, w: 4, h: size.height);
   }
 

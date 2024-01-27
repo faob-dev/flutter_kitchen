@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class GameWidget extends StatefulWidget {
+  const GameWidget({super.key});
+
   @override
-  _GameWidgetState createState() => _GameWidgetState();
+  State<GameWidget> createState() => _GameWidgetState();
 }
 
 class _GameWidgetState extends State<GameWidget>
     with SingleTickerProviderStateMixin {
-  FocusNode _focusNode;
-  GamePainter _gamePainter;
-  AnimationController _controller;
+  late FocusNode _focusNode;
+  late GamePainter _gamePainter;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -21,7 +23,7 @@ class _GameWidgetState extends State<GameWidget>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     _controller.repeat();
   }
@@ -37,7 +39,7 @@ class _GameWidgetState extends State<GameWidget>
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Color(0xFF2e282a),
+        color: const Color(0xFF2e282a),
         child: LayoutBuilder(
           builder: (context, constraints) {
             return RawKeyboardListener(
